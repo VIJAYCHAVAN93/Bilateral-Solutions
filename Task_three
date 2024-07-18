@@ -1,0 +1,56 @@
+1. Check Order Details
+
+SELECT 
+    order_id,
+    customer_id,
+    product_id,
+    quantity
+FROM 
+    orders
+WHERE 
+    customer_id = 'customer_id_placeholder' 
+    AND order_id = 'order_id_placeholder';
+
+2. Check Inventory Levels
+
+SELECT 
+    product_id,
+    stock_level
+FROM 
+    inventory
+WHERE 
+    product_id = 'product_id_placeholder';
+
+
+3. Check Inventory Transactions (if applicable)
+
+SELECT 
+    transaction_id,
+    product_id,
+    quantity_change,
+    transaction_type,
+    transaction_date
+FROM 
+    inventory_transactions
+WHERE 
+    product_id = 'product_id_placeholder'
+ORDER BY 
+    transaction_date DESC;
+
+
+ 4. Check for Reserved Stock
+
+ SELECT 
+    product_id,
+    reserved_quantity
+FROM 
+    reserved_inventory
+WHERE 
+    product_id = 'product_id_placeholder';
+
+
+-- Explanation
+-- Step 1: Retrieve the order details to identify the specific product and quantity ordered.
+-- Step 2: Check the current stock level of the product in the inventory.
+-- Step 3: (Optional) Review recent inventory transactions to see if there have been any updates or discrepancies affecting the stock level.
+-- Step 4: (Optional) Check if any stock is reserved for other orders, which might explain why the product shows as out of stock.
